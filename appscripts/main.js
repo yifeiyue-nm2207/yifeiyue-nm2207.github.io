@@ -71,14 +71,14 @@ const sleep_data = fetch("https://raw.githubusercontent.com/yifeiyue-nm2207/yife
         labels: ['1', '2', '3', '4', '5'],
         datasets: [
             {
-                label: 'Yes',
+                label: 'Yes, I use social media',
                 backgroundColor: 'rgba(54, 162, 235, 0.5)',
                 borderColor: 'rgba(54, 162, 235, 1)',
                 borderWidth: 1,
                 data: sleep_issues_yes_freq
             },
             {
-                label: 'No',
+                label: 'No, I don\'t use social media',
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
                 borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 1,
@@ -160,14 +160,14 @@ const distraction_data = fetch("https://raw.githubusercontent.com/yifeiyue-nm220
         labels: ['1', '2', '3', '4', '5'],//uncomment this and set this to negLabels
         datasets: [
             {
-                label: 'Yes',
+                label: 'Yes, I use social media',
                 backgroundColor: 'rgba(54, 162, 235, 0.5)',
                 borderColor: 'rgba(54, 162, 235, 1)',
                 borderWidth: 1,
                 data: distraction_yes_freq
             },
             {
-                label: 'No',
+                label: 'No, I don\'t use social media',
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
                 borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 1,
@@ -186,7 +186,7 @@ const distraction_data = fetch("https://raw.githubusercontent.com/yifeiyue-nm220
             },
             title: {
                 display: true,
-                text: ['The relation between Distraction and ','the Use of Social Media'],//set this to ['The most negative phrases in the Singlish vocabulary','According to research']
+                text: ['The relation between Distractibility and ','the Use of Social Media'],//set this to ['The most negative phrases in the Singlish vocabulary','According to research']
                 fontFamily: "TrebuchetMS",
                 fontSize: 24,
                 fontColor: 'rgb(0,120,0)',
@@ -249,14 +249,14 @@ const concentration_data = fetch("https://raw.githubusercontent.com/yifeiyue-nm2
         labels: ['1', '2', '3', '4', '5'],//uncomment this and set this to negLabels
         datasets: [
             {
-                label: 'Yes',
+                label: 'Yes, I use social media',
                 backgroundColor: 'rgba(54, 162, 235, 0.5)',
                 borderColor: 'rgba(54, 162, 235, 1)',
                 borderWidth: 1,
                 data: concentration_yes_freq
             },
             {
-                label: 'No',
+                label: 'No, I don\'t use social media',
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
                 borderColor: 'rgba(255, 99, 132, 1)',
                 borderWidth: 1,
@@ -275,7 +275,7 @@ const concentration_data = fetch("https://raw.githubusercontent.com/yifeiyue-nm2
             },
             title: {
                 display: true,
-                text: ['The relation between Difficulty in Concentration and ','the Use of Social Media'],//set this to ['The most negative phrases in the Singlish vocabulary','According to research']
+                text: ['The relation between Difficulty in Concentrating and ','the Use of Social Media'],//set this to ['The most negative phrases in the Singlish vocabulary','According to research']
                 fontFamily: "TrebuchetMS",
                 fontSize: 24,
                 fontColor: 'rgb(0,120,0)',
