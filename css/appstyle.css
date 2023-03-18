@@ -57,6 +57,14 @@ body {
 	text-align: center;
   }
 
+  #canvas-pie {
+    display: flex;
+    width: 50%;
+    height: 50%;
+    margin-left: 25%;
+    border-radius: 10px;
+}
+
   .form-container {
 	text-align: left;
 	max-width: 600px;

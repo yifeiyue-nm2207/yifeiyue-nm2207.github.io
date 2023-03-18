@@ -16,6 +16,28 @@ themeButton.addEventListener('click', () => {
   body.classList.toggle('dark');
 });
 
+const pie = new Chart("pie",
+{
+    type: "pie",
+    data: {
+        labels: ["Social Media Users", "Non-Social Media Users"],
+        datasets: [ {
+            data: [472, 3],
+            backgroundColor: ["#3b5998", "#dc3545"],
+            hoverOffset: 4,
+            }]
+        },
+    options: {
+        plugins:{
+            title:{
+                display: true,
+                text: "Social Media Users VS Non-Social Media Users",
+                padding: {top: 20, bottom:20},
+            }
+        }
+   }
+});
+
 
 // Make a request for the CSV file
 const sleep_data = fetch("https://raw.githubusercontent.com/yifeiyue-nm2207/yifeiyue-nm2207.github.io/main/resources/smmh.csv")
