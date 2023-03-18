@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
     <title>Exploring the Relationship between Social Media Usage and Mental Health</title>
-    <link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/appstyle.css">
+	<script defer type="text/javascript" src="appscripts/main.js"></script>
   </head>
   <body>
     <header>
@@ -14,6 +16,7 @@
           <li><a href="#conclusion">Conclusion</a></li>
           <li><a href="#references">References</a></li>
 		  <li><a href="#contact">Contact</a></li>
+		  <button id="themeButton">Change Theme</button>
         </ul>
       </nav>
     </header>
@@ -28,6 +31,7 @@
 			comparison. While not all social media use is harmful, it's important for individuals to be mindful
 			of their social media habits and the potential impact on their mental health.
 		</p>
+		<div id="image-container"></div>
 		<p>
 			Based on the aforementioned background, it's clear that there is a need for further exploration of
 			the relationship between social media usage and mental health. This is where data visualization comes
@@ -41,22 +45,56 @@
       <section id="data-visualization">
         <h2>Data Visualization</h2>
         <p>[Insert your data visualization here]</p>
+		<div id="canvas-container">
+			<canvas id="my_chart_1" width="400" height="400"></canvas>
+		</div>
+		<p>
+			It is evident that there is a correlation between social media usage and sleep problems. More than half of the
+			people who use social media rate their sleep problems as 3 or higher on a scale of 0-5. This suggests that there
+			may be a negative impact of social media on sleep quality. It is important to note, however, that this is a
+			correlation and not necessarily a causal relationship, and further research may be necessary to establish causality.
+			Nonetheless, these findings highlight the importance of maintaining healthy social media habits and prioritizing
+			quality sleep.
+		</p>
+		<div id="canvas-container">
+			<canvas id="my_chart_2" width="400" height="400"></canvas>
+		</div>
+		<p>
+			It can be concluded that social media usage is strongly associated with distraction. More than half of the respondents
+			who reported using social media also reported high levels of distractibility, rating themselves at 3 or higher on a scale
+			of 0-5. This finding highlights the potential negative impact of social media on individuals' ability to concentrate and
+			focus on tasks.
+		</p>
+		<div id="canvas-container">
+			<canvas id="my_chart_3" width="400" height="400"></canvas>
+		</div>
+		<p>
+			it appears that individuals who use social media are more likely to report difficulty with concentration. Over half of
+			the individuals in the dataset rated their difficulty with concentration at 3 or higher on a scale of 0-5.
+		</p>
       </section>
       <section id="conclusion">
         <h2>Conclusion</h2>
-        <p>[Insert your conclusion text here]</p>
+        <p>
+			Although it is clear from the current analysis that using social media can have detrimental effects on a person's mental
+			health, my exploration of the dataset is still somewhat limited. Therefore, I will continue to analyze whether there are
+			differences in the level of impact between men and women, young people, middle-aged people, and older people, as well as
+			between single and non-single individuals, and whether there are differences in the results based on the frequency of social
+			media use. I will also use more interesting visualization techniques and new graphics to illustrate this information in the
+			future.
+		</p>
       </section>
       <section id="references">
         <h2>References</h2>
-        <p>[Insert your references here]</p>
+        <p>Data source: <a href="https://www.kaggle.com/datasets/souvikahmed071/social-media-and-mental-health">Social Media and Mental Health</a> by Souvik Ahmed</p>
       </section>
 	  <section id="contact">
         <h2>Contact</h2>
 		<div class="form-container">
 			<form>
-			  <label for="name">Name:</label>
+			  <label for="name">Your Name:</label>
 			  <input type="text" id="name" name="name" required>
-			  <label for="email">Email:</label>
+			  <label for="email">Your Email:</label>
 			  <input type="email" id="email" name="email" required>
 			  <label for="feedback">Feedback/Thoughts:</label>
 			  <textarea id="feedback" name="feedback" rows="5" required></textarea>

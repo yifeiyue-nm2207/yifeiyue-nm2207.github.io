@@ -5,6 +5,17 @@ body {
 	margin: 0;
   }
 
+  body {
+	background-color: rgb(240, 240, 240);
+	color: #333;
+  }
+
+  .dark {
+	background-color: rgb(135, 135, 135);
+	color: #f5f5f5;
+  }
+
+
   header {
 	background-color: #0071C5;
 	color: #fff;
@@ -104,3 +115,11 @@ body {
   .submit-button-container button[type="submit"]:hover {
 	background-color: #3367D6;
   }
+
+  <style>
+        #canvas-container {
+            position: relative;
+            height: 80%;
+            width: 80%;
+        }
+    </style>
