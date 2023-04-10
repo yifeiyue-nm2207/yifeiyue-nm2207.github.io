@@ -1,3 +1,12 @@
+.video-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	padding: 10px;
+  }
+
+
 body {
 	font-family: Arial, sans-serif;
 	font-size: 16px;

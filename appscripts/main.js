@@ -1,8 +1,9 @@
 
 function insertImage(imagePath, elementId) {
-    const element = document.getElementById(elementId);
-    element.innerHTML = `<img src="${imagePath}" alt="Image" width="1000" height="500">`;
+  const element = document.getElementById(elementId);
+  element.innerHTML = `<img src="${imagePath}" alt="Image" width="1000" height="500" style="display:block; margin:auto;">`;
 }
+
 
 const imagePath = 'resources/background.png';
 const elementId = 'image-container';
