@@ -17,31 +17,76 @@ themeButton.addEventListener('click', () => {
   body.classList.toggle('dark');
 });
 
-const pie = new Chart("pie",
+// gender pie
+new Chart("gender",
 {
     type: "pie",
     data: {
-        labels: ["Social Media Users", "Non-Social Media Users"],
+        labels: ["Male", "Female"],
         datasets: [ {
-            data: [472, 3],
+            data: [208, 259],
             backgroundColor: ["#3b5998", "#dc3545"],
             hoverOffset: 4,
             }]
         },
     options: {
-        plugins:{
-            title:{
-                display: true,
-                text: "Social Media Users VS Non-Social Media Users",
-                padding: {top: 20, bottom:20},
-            }
+        title:{
+            display: true,
+            text: ["Number of Male/Female completed the survey"],
+            fontFamily: "TrebuchetMS",
+            fontSize: 18,
+            fontColor: 'rgb(0,120,0)',
         }
    }
 });
 
+const timeSpentDataObj = {
+    labels: [
+        "Less than an Hour",
+        "Between 1 and 2 hours",
+        "Between 2 and 3 hours",
+        "Between 3 and 4 hours",
+        "Between 4 and 5 hours",
+        "More than 5 hours",
+      ],
+      datasets: [
+        {
+          label: "Time Spent on Social Media",
+          data: [33, 69, 96, 92, 65, 112],
+          backgroundColor: [
+            "#3b5998",
+            "#007bff",
+            "#6f42c1",
+            "#dc3545",
+            "#fd7e14",
+            "#28a745",
+          ],
+        },
+      ],
+}
+
+new Chart("time-spent-chart", {
+    type: "bar",
+    data: timeSpentDataObj,
+    options: {
+        maintainAspectRatio: false,
+        legend: {
+            display: false,
+        },
+        title: {
+            display: true,
+            text: ["Time Spent on Social Media"],
+            fontFamily: "TrebuchetMS",
+            fontSize: 24,
+            fontColor: 'rgb(0,120,0)',
+        }
+    }
+  });
+
+
 
 // Make a request for the CSV file
-const sleep_data = fetch("https://raw.githubusercontent.com/yifeiyue-nm2207/yifeiyue-nm2207.github.io/main/resources/smmh.csv")
+const sleep_data = fetch("https://raw.githubusercontent.com/yifeiyue-nm2207/yifeiyue-nm2207.github.io/main/resources/filtered_dataset.csv")
 .then(function (response){
     return response.text();
 })
@@ -130,7 +175,7 @@ const sleep_data = fetch("https://raw.githubusercontent.com/yifeiyue-nm2207/yife
 });
 
 
-const distraction_data = fetch("https://raw.githubusercontent.com/yifeiyue-nm2207/yifeiyue-nm2207.github.io/main/resources/smmh.csv")
+const distraction_data = fetch("https://raw.githubusercontent.com/yifeiyue-nm2207/yifeiyue-nm2207.github.io/main/resources/filtered_dataset.csv")
 .then(function (response){
     return response.text();
 })
@@ -219,7 +264,7 @@ const distraction_data = fetch("https://raw.githubusercontent.com/yifeiyue-nm220
 });
 
 
-const concentration_data = fetch("https://raw.githubusercontent.com/yifeiyue-nm2207/yifeiyue-nm2207.github.io/main/resources/smmh.csv")
+const concentration_data = fetch("https://raw.githubusercontent.com/yifeiyue-nm2207/yifeiyue-nm2207.github.io/main/resources/filtered_dataset.csv")
 .then(function (response){
     return response.text();
 })

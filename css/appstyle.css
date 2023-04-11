@@ -66,13 +66,32 @@ body {
 	text-align: center;
   }
 
-  #canvas-pie {
+
+#canvas-pie {
     display: flex;
-    width: 50%;
-    height: 50%;
+    flex-direction: row;
+	width: 50%;
     margin-left: 25%;
-    border-radius: 10px;
 }
+
+#canvas-bar {
+    padding-left: 20%;
+    padding-right: 20%;
+	height: 300px;
+	width: 900px;
+}
+
+#time-spent-chart {
+	width: 200px;
+	height: 200px;
+  }
+
+  #canvas-container {
+	position: relative;
+	height: 80%;
+	width: 80%;
+}
+
 
   .form-container {
 	text-align: left;
@@ -133,10 +152,3 @@ body {
 	background-color: #3367D6;
   }
 
-  <style>
-        #canvas-container {
-            position: relative;
-            height: 80%;
-            width: 80%;
-        }
-    </style>
