@@ -1,136 +1,153 @@
-// 添加单击事件监听器
+// Add a click event listener to the document
 document.addEventListener('click', function(event) {
+	// Create a new heart-shaped element and add the 'heart' class to it
 	var heart = document.createElement('div');
 	heart.classList.add('heart');
 
-	// 鼠标点击的位置
+	// Get the x and y coordinates of the click event
 	var x = event.clientX;
 	var y = event.clientY;
 
-	// 设置爱心的位置
+	// Set the position of the heart element to the x and y coordinates
 	heart.style.left = x + 'px';
 	heart.style.top = y + 'px';
 
-	// 将爱心添加到容器中
+	// Add the heart element to the container element with class 'heart-container'
 	document.querySelector('.heart-container').appendChild(heart);
 
-	// 一定时间后删除爱心元素
+	// Set a timeout to remove the heart element after 1 second
 	setTimeout(function() {
 		heart.remove();
 	}, 1000);
 });
 
-
+// Get the custom cursor element by ID
 const cursor = document.getElementById("cursor");
+
+// Add a mousemove event listener to the document
 document.addEventListener("mousemove", function(e) {
+    // Get the x and y coordinates of the mouse position
     let x = e.pageX;
     let y = e.pageY;
 
-    // update the position of the custom cursor element based on the mouse position
+    // Update the position of the custom cursor element based on the mouse position
     cursor.style.left = x + "px";
     cursor.style.top = y + "px";
 });
 
-let timeoutId; // stores the ID of the timeout
+// Initialize a variable to store the ID of the timeout
+let timeoutId;
 
-// hide the cursor while scrolling
+// Add a scroll event listener to the window
 window.addEventListener("scroll", function() {
+  // Clear the previous timeout if it exists
   clearTimeout(timeoutId);
+
+  // Hide the cursor element
   cursor.style.display = "none";
+
+  // Set a timeout to show the cursor element again after 0.1 second of not scrolling
   timeoutId = setTimeout(function() {
     cursor.style.display = "block";
-  }, 100); // show the cursor after 0.1 second of not scrolling
+  }, 100);
 });
 
-
-//   document.body.style.cursor = "none"; // hide default cursor
-
-//   cursor.style.position = "fixed"; // set custom cursor to fixed position
-
-
+// This function inserts an image into an HTML element with the specified ID
 function insertImage(imagePath, elementId) {
-  const element = document.getElementById(elementId);
-  element.innerHTML = `<img src="${imagePath}" alt="Image" width="1000" height="500" style="display:block; margin:auto;">`;
-}
+    const element = document.getElementById(elementId);
+    // Set the innerHTML of the specified element to an HTML img element with the given source, alt text, width, and height
+    element.innerHTML = `<img src="${imagePath}" alt="Image" width="1000" height="500" style="display:block; margin:auto;">`;
+  }
+
+  // Set the path to the desired image and the ID of the HTML element that the image will be inserted into
+  const imagePath = 'resources/background.png';
+  const elementId = 'image-container';
+
+  // Call the insertImage function with the specified imagePath and elementId arguments
+  insertImage(imagePath, elementId);
+
+  // Get references to the HTML button element with ID 'themeButton' and the body element
+  const themeButton = document.getElementById('themeButton');
+  const body = document.querySelector('body');
+
+  // Add a click event listener to the themeButton that toggles the 'dark' class on the body element
+  themeButton.addEventListener('click', () => {
+    body.classList.toggle('dark');
+  });
 
 
-const imagePath = 'resources/background.png';
-const elementId = 'image-container';
-
-insertImage(imagePath, elementId);
-
-const themeButton = document.getElementById('themeButton');
-const body = document.querySelector('body');
-
-themeButton.addEventListener('click', () => {
-  body.classList.toggle('dark');
-});
-
-// gender pie
-new Chart("gender",
-{
+// Create a pie chart to show the distribution of male and female survey respondents
+new Chart("gender", {
     type: "pie",
     data: {
-        labels: ["Male", "Female"],
-        datasets: [ {
-            data: [208, 259],
-            backgroundColor: ["#3b5998", "#dc3545"],
-            hoverOffset: 4,
-            }]
-        },
-    options: {
-        title:{
-            display: true,
-            text: ["Number of Male/Female completed the survey"],
-            fontFamily: "TrebuchetMS",
-            fontSize: 18,
-            fontColor: 'rgb(0,120,0)',
-        }
-   }
-});
-
-const timeSpentDataObj = {
-    labels: [
-        "Less than an Hour",
-        "Between 1 and 2 hours",
-        "Between 2 and 3 hours",
-        "Between 3 and 4 hours",
-        "Between 4 and 5 hours",
-        "More than 5 hours",
-      ],
+      labels: ["Male", "Female"],
       datasets: [
         {
-          label: "Time Spent on Social Media",
-          data: [33, 69, 96, 92, 65, 112],
-          backgroundColor: [
-            "#3b5998",
-            "#007bff",
-            "#6f42c1",
-            "#dc3545",
-            "#fd7e14",
-            "#28a745",
-          ],
+          data: [208, 259],
+          backgroundColor: ["#3b5998", "#dc3545"],
+          hoverOffset: 4,
         },
       ],
-}
+    },
+    options: {
+      // Display the title of the chart
+      title: {
+        display: true,
+        text: ["Number of Male/Female completed the survey"],
+        fontFamily: "TrebuchetMS",
+        fontSize: 18,
+        fontColor: 'rgb(0,120,0)',
+      },
+    },
+  });
 
+  // Define data for a bar chart to show how much time survey respondents spent on social media
+  const timeSpentDataObj = {
+    labels: [
+      "Less than an Hour",
+      "Between 1 and 2 hours",
+      "Between 2 and 3 hours",
+      "Between 3 and 4 hours",
+      "Between 4 and 5 hours",
+      "More than 5 hours",
+    ],
+    datasets: [
+      {
+        label: "Time Spent on Social Media",
+        data: [33, 69, 96, 92, 65, 112],
+        backgroundColor: [
+          "#3b5998",
+          "#007bff",
+          "#6f42c1",
+          "#dc3545",
+          "#fd7e14",
+          "#28a745",
+        ],
+      },
+    ],
+  };
+
+// Create a bar chart to show how much time survey respondents spent on social media
 new Chart("time-spent-chart", {
     type: "bar",
     data: timeSpentDataObj,
     options: {
-        maintainAspectRatio: false,
-        legend: {
-            display: false,
-        },
-        title: {
-            display: true,
-            text: ["Time Spent on Social Media"],
-            fontFamily: "TrebuchetMS",
-            fontSize: 24,
-            fontColor: 'rgb(0,120,0)',
-        }
-    }
+      // Disable maintaining aspect ratio and hide the legend
+      maintainAspectRatio: false,
+      legend: {
+        display: false,
+      },
+      // Display the title of the chart
+      title: {
+        display: true,
+        text: ["Time Spent on Social Media"],
+        fontFamily: "TrebuchetMS",
+        fontSize: 24,
+        fontColor: 'rgb(0,120,0)',
+      },
+    },
   });
+
 
 const gender_data = fetch("https://raw.githubusercontent.com/yifeiyue-nm2207/yifeiyue-nm2207.github.io/main/resources/filtered_dataset.csv")
   .then(function (response){
@@ -183,37 +200,37 @@ const gender_data = fetch("https://raw.githubusercontent.com/yifeiyue-nm2207/yif
         ];
 
       const genderObj = {
-          labels: labelGender,           //we want the x axis to be the years
+          labels: labelGender,
           datasets: [
               {
-                  label: "Level 1",// uncomment this line and set this to "Accountancy" for example
+                  label: "Level 1",
                   data: [maleLevelCount[0], femaleLevelCount[0]],// uncomment this line and set this to an array [] with commas that are the bold numbers next to Accountancy for example
                   borderWidth: 2,
-                  backgroundColor: "#3b5998",//put a color here as rgb(0,0,255) or hsla(20,100%,80%,0.8) format, from https://imagecolorpicker.com/en or https://color.adobe.com/ (explore the Triad radio button on the left)
+                  backgroundColor: "#3b5998",
               },
               {
-                  label: "Level 2",// uncomment this line and set this to "Accountancy" for example
+                  label: "Level 2",
                   data: [maleLevelCount[1], femaleLevelCount[1]],// uncomment this line and set this to an array [] with commas that are the bold numbers next to Accountancy for example
                   borderWidth: 2,
-                  backgroundColor: "#007bff",//put a color here as rgb(0,0,255) or hsla(20,100%,80%,0.8) format, from https://imagecolorpicker.com/en or https://color.adobe.com/ (explore the Triad radio button on the left)
+                  backgroundColor: "#007bff",
               },
               {
-                  label: "Level 3",// uncomment this line and set this to "Accountancy" for example
+                  label: "Level 3",
                   data: [maleLevelCount[2], femaleLevelCount[2]],// uncomment this line and set this to an array [] with commas that are the bold numbers next to Accountancy for example
                   borderWidth: 2,
-                  backgroundColor: "#dc3545",//put a color here as rgb(0,0,255) or hsla(20,100%,80%,0.8) format, from https://imagecolorpicker.com/en or https://color.adobe.com/ (explore the Triad radio button on the left)
+                  backgroundColor: "#dc3545",
               },
               {
-                  label: "Level 4",// uncomment this line and set this to "Accountancy" for example
+                  label: "Level 4",
                   data: [maleLevelCount[3], femaleLevelCount[3]],// uncomment this line and set this to an array [] with commas that are the bold numbers next to Accountancy for example
                   borderWidth: 2,
-                  backgroundColor: "#fd7e14",//put a color here as rgb(0,0,255) or hsla(20,100%,80%,0.8) format, from https://imagecolorpicker.com/en or https://color.adobe.com/ (explore the Triad radio button on the left)
+                  backgroundColor: "#fd7e14",
               },
               {
-                  label: "Level 5",// uncomment this line and set this to "Accountancy" for example
+                  label: "Level 5",
                   data: [maleLevelCount[4], femaleLevelCount[4]],// uncomment this line and set this to an array [] with commas that are the bold numbers next to Accountancy for example
                   borderWidth: 2,
-                  backgroundColor: "#28a745",//put a color here as rgb(0,0,255) or hsla(20,100%,80%,0.8) format, from https://imagecolorpicker.com/en or https://color.adobe.com/ (explore the Triad radio button on the left)
+                  backgroundColor: "#28a745",
               }
           ],
       }
@@ -339,37 +356,37 @@ const sleep_data = fetch("https://raw.githubusercontent.com/yifeiyue-nm2207/yife
       ];
 
     const timeSpentObj = {
-        labels: labelTimeSpent,           //we want the x axis to be the years
+        labels: labelTimeSpent,
         datasets: [
             {
-                label: "Level 1",// uncomment this line and set this to "Accountancy" for example
+                label: "Level 1",
                 data: [sleepCount0[0], sleepCount1[0], sleepCount2[0], sleepCount3[0], sleepCount4[0], sleepCount5[0]],// uncomment this line and set this to an array [] with commas that are the bold numbers next to Accountancy for example
                 borderWidth: 2,
-                backgroundColor: "#3b5998",//put a color here as rgb(0,0,255) or hsla(20,100%,80%,0.8) format, from https://imagecolorpicker.com/en or https://color.adobe.com/ (explore the Triad radio button on the left)
+                backgroundColor: "#3b5998",
             },
             {
-                label: "Level 2",// uncomment this line and set this to "Accountancy" for example
+                label: "Level 2",
                 data: [sleepCount0[1], sleepCount1[1], sleepCount2[1], sleepCount3[1], sleepCount4[1], sleepCount5[1]],// uncomment this line and set this to an array [] with commas that are the bold numbers next to Accountancy for example
                 borderWidth: 2,
-                backgroundColor: "#007bff",//put a color here as rgb(0,0,255) or hsla(20,100%,80%,0.8) format, from https://imagecolorpicker.com/en or https://color.adobe.com/ (explore the Triad radio button on the left)
+                backgroundColor: "#007bff",
             },
             {
-                label: "Level 3",// uncomment this line and set this to "Accountancy" for example
+                label: "Level 3",
                 data: [sleepCount0[2], sleepCount1[2], sleepCount2[2], sleepCount3[2], sleepCount4[2], sleepCount5[2]],// uncomment this line and set this to an array [] with commas that are the bold numbers next to Accountancy for example
                 borderWidth: 2,
-                backgroundColor: "#dc3545",//put a color here as rgb(0,0,255) or hsla(20,100%,80%,0.8) format, from https://imagecolorpicker.com/en or https://color.adobe.com/ (explore the Triad radio button on the left)
+                backgroundColor: "#dc3545",
             },
             {
-                label: "Level 4",// uncomment this line and set this to "Accountancy" for example
+                label: "Level 4",
                 data: [sleepCount0[3], sleepCount1[3], sleepCount2[3], sleepCount3[3], sleepCount4[3], sleepCount5[3]],// uncomment this line and set this to an array [] with commas that are the bold numbers next to Accountancy for example
                 borderWidth: 2,
-                backgroundColor: "#fd7e14",//put a color here as rgb(0,0,255) or hsla(20,100%,80%,0.8) format, from https://imagecolorpicker.com/en or https://color.adobe.com/ (explore the Triad radio button on the left)
+                backgroundColor: "#fd7e14",
             },
             {
-                label: "Level 5",// uncomment this line and set this to "Accountancy" for example
+                label: "Level 5",
                 data: [sleepCount0[4], sleepCount1[4], sleepCount2[4], sleepCount3[4], sleepCount4[4], sleepCount5[4]],// uncomment this line and set this to an array [] with commas that are the bold numbers next to Accountancy for example
                 borderWidth: 2,
-                backgroundColor: "#28a745",//put a color here as rgb(0,0,255) or hsla(20,100%,80%,0.8) format, from https://imagecolorpicker.com/en or https://color.adobe.com/ (explore the Triad radio button on the left)
+                backgroundColor: "#28a745",
             }
         ],
     }
@@ -494,37 +511,37 @@ const distraction_data = fetch("https://raw.githubusercontent.com/yifeiyue-nm220
       ];
 
     const timeSpentObj = {
-        labels: labelTimeSpent,           //we want the x axis to be the years
+        labels: labelTimeSpent,
         datasets: [
             {
-                label: "Level 1",// uncomment this line and set this to "Accountancy" for example
+                label: "Level 1",
                 data: [distractionCount0[0], distractionCount1[0], distractionCount2[0], distractionCount3[0], distractionCount4[0], distractionCount5[0]],// uncomment this line and set this to an array [] with commas that are the bold numbers next to Accountancy for example
                 borderWidth: 2,
-                backgroundColor: "#3b5998",//put a color here as rgb(0,0,255) or hsla(20,100%,80%,0.8) format, from https://imagecolorpicker.com/en or https://color.adobe.com/ (explore the Triad radio button on the left)
+                backgroundColor: "#3b5998",
             },
             {
-                label: "Level 2",// uncomment this line and set this to "Accountancy" for example
+                label: "Level 2",
                 data: [distractionCount0[1], distractionCount1[1], distractionCount2[1], distractionCount3[1], distractionCount4[1], distractionCount5[1]],// uncomment this line and set this to an array [] with commas that are the bold numbers next to Accountancy for example
                 borderWidth: 2,
-                backgroundColor: "#007bff",//put a color here as rgb(0,0,255) or hsla(20,100%,80%,0.8) format, from https://imagecolorpicker.com/en or https://color.adobe.com/ (explore the Triad radio button on the left)
+                backgroundColor: "#007bff",
             },
             {
-                label: "Level 3",// uncomment this line and set this to "Accountancy" for example
+                label: "Level 3",
                 data: [distractionCount0[2], distractionCount1[2], distractionCount2[2], distractionCount3[2], distractionCount4[2], distractionCount5[2]],// uncomment this line and set this to an array [] with commas that are the bold numbers next to Accountancy for example
                 borderWidth: 2,
-                backgroundColor: "#dc3545",//put a color here as rgb(0,0,255) or hsla(20,100%,80%,0.8) format, from https://imagecolorpicker.com/en or https://color.adobe.com/ (explore the Triad radio button on the left)
+                backgroundColor: "#dc3545",
             },
             {
-                label: "Level 4",// uncomment this line and set this to "Accountancy" for example
+                label: "Level 4",
                 data: [distractionCount0[3], distractionCount1[3], distractionCount2[3], distractionCount3[3], distractionCount4[3], distractionCount5[3]],// uncomment this line and set this to an array [] with commas that are the bold numbers next to Accountancy for example
                 borderWidth: 2,
-                backgroundColor: "#fd7e14",//put a color here as rgb(0,0,255) or hsla(20,100%,80%,0.8) format, from https://imagecolorpicker.com/en or https://color.adobe.com/ (explore the Triad radio button on the left)
+                backgroundColor: "#fd7e14",
             },
             {
-                label: "Level 5",// uncomment this line and set this to "Accountancy" for example
+                label: "Level 5",
                 data: [distractionCount0[4], distractionCount1[4], distractionCount2[4], distractionCount3[4], distractionCount4[4], distractionCount5[4]],// uncomment this line and set this to an array [] with commas that are the bold numbers next to Accountancy for example
                 borderWidth: 2,
-                backgroundColor: "#28a745",//put a color here as rgb(0,0,255) or hsla(20,100%,80%,0.8) format, from https://imagecolorpicker.com/en or https://color.adobe.com/ (explore the Triad radio button on the left)
+                backgroundColor: "#28a745",
             }
         ],
     }
@@ -650,37 +667,37 @@ const concentration_data = fetch("https://raw.githubusercontent.com/yifeiyue-nm2
       ];
 
     const timeSpentObj = {
-        labels: labelTimeSpent,           //we want the x axis to be the years
+        labels: labelTimeSpent,
         datasets: [
             {
-                label: "Level 1",// uncomment this line and set this to "Accountancy" for example
+                label: "Level 1",
                 data: [concentrationCount0[0], concentrationCount1[0], concentrationCount2[0], concentrationCount3[0], concentrationCount4[0], concentrationCount5[0]],// uncomment this line and set this to an array [] with commas that are the bold numbers next to Accountancy for example
                 borderWidth: 2,
-                backgroundColor: "#3b5998",//put a color here as rgb(0,0,255) or hsla(20,100%,80%,0.8) format, from https://imagecolorpicker.com/en or https://color.adobe.com/ (explore the Triad radio button on the left)
+                backgroundColor: "#3b5998",
             },
             {
-                label: "Level 2",// uncomment this line and set this to "Accountancy" for example
+                label: "Level 2",
                 data: [concentrationCount0[1], concentrationCount1[1], concentrationCount2[1], concentrationCount3[1], concentrationCount4[1], concentrationCount5[1]],// uncomment this line and set this to an array [] with commas that are the bold numbers next to Accountancy for example
                 borderWidth: 2,
-                backgroundColor: "#007bff",//put a color here as rgb(0,0,255) or hsla(20,100%,80%,0.8) format, from https://imagecolorpicker.com/en or https://color.adobe.com/ (explore the Triad radio button on the left)
+                backgroundColor: "#007bff",
             },
             {
-                label: "Level 3",// uncomment this line and set this to "Accountancy" for example
+                label: "Level 3",
                 data: [concentrationCount0[2], concentrationCount1[2], concentrationCount2[2], concentrationCount3[2], concentrationCount4[2], concentrationCount5[2]],// uncomment this line and set this to an array [] with commas that are the bold numbers next to Accountancy for example
                 borderWidth: 2,
-                backgroundColor: "#dc3545",//put a color here as rgb(0,0,255) or hsla(20,100%,80%,0.8) format, from https://imagecolorpicker.com/en or https://color.adobe.com/ (explore the Triad radio button on the left)
+                backgroundColor: "#dc3545",
             },
             {
-                label: "Level 4",// uncomment this line and set this to "Accountancy" for example
+                label: "Level 4",
                 data: [concentrationCount0[3], concentrationCount1[3], concentrationCount2[3], concentrationCount3[3], concentrationCount4[3], concentrationCount5[3]],// uncomment this line and set this to an array [] with commas that are the bold numbers next to Accountancy for example
                 borderWidth: 2,
-                backgroundColor: "#fd7e14",//put a color here as rgb(0,0,255) or hsla(20,100%,80%,0.8) format, from https://imagecolorpicker.com/en or https://color.adobe.com/ (explore the Triad radio button on the left)
+                backgroundColor: "#fd7e14",
             },
             {
-                label: "Level 5",// uncomment this line and set this to "Accountancy" for example
+                label: "Level 5",
                 data: [concentrationCount0[4], concentrationCount1[4], concentrationCount2[4], concentrationCount3[4], concentrationCount4[4], concentrationCount5[4]],// uncomment this line and set this to an array [] with commas that are the bold numbers next to Accountancy for example
                 borderWidth: 2,
-                backgroundColor: "#28a745",//put a color here as rgb(0,0,255) or hsla(20,100%,80%,0.8) format, from https://imagecolorpicker.com/en or https://color.adobe.com/ (explore the Triad radio button on the left)
+                backgroundColor: "#28a745",
             }
         ],
     }
@@ -705,21 +722,26 @@ const concentration_data = fetch("https://raw.githubusercontent.com/yifeiyue-nm2
     });
 });
 
+// Get the back-to-top button element
 const backToTopButton = document.getElementById('backToTopButton');
 
+// Add a scroll event listener to the window
 window.addEventListener('scroll', () => {
+  // If the user has scrolled down, display the back-to-top button
   if (window.pageYOffset > 0) {
     backToTopButton.style.display = 'block';
-  } else {
+  }
+  // Otherwise, hide the back-to-top button
+  else {
     backToTopButton.style.display = 'none';
   }
 });
 
+// Add a click event listener to the back-to-top button
 backToTopButton.addEventListener('click', () => {
+  // When the button is clicked, scroll to the top of the page smoothly
   window.scrollTo({
     top: 0,
     behavior: 'smooth'
   });
 });
-
-
