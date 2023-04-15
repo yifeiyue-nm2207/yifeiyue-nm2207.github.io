@@ -1,3 +1,52 @@
+// 添加单击事件监听器
+document.addEventListener('click', function(event) {
+	var heart = document.createElement('div');
+	heart.classList.add('heart');
+
+	// 鼠标点击的位置
+	var x = event.clientX;
+	var y = event.clientY;
+
+	// 设置爱心的位置
+	heart.style.left = x + 'px';
+	heart.style.top = y + 'px';
+
+	// 将爱心添加到容器中
+	document.querySelector('.heart-container').appendChild(heart);
+
+	// 一定时间后删除爱心元素
+	setTimeout(function() {
+		heart.remove();
+	}, 1000);
+});
+
+
+const cursor = document.getElementById("cursor");
+document.addEventListener("mousemove", function(e) {
+    let x = e.pageX;
+    let y = e.pageY;
+
+    // update the position of the custom cursor element based on the mouse position
+    cursor.style.left = x + "px";
+    cursor.style.top = y + "px";
+});
+
+let timeoutId; // stores the ID of the timeout
+
+// hide the cursor while scrolling
+window.addEventListener("scroll", function() {
+  clearTimeout(timeoutId);
+  cursor.style.display = "none";
+  timeoutId = setTimeout(function() {
+    cursor.style.display = "block";
+  }, 100); // show the cursor after 0.1 second of not scrolling
+});
+
+
+//   document.body.style.cursor = "none"; // hide default cursor
+
+//   cursor.style.position = "fixed"; // set custom cursor to fixed position
+
 
 function insertImage(imagePath, elementId) {
   const element = document.getElementById(elementId);
@@ -655,4 +704,22 @@ const concentration_data = fetch("https://raw.githubusercontent.com/yifeiyue-nm2
         }
     });
 });
+
+const backToTopButton = document.getElementById('backToTopButton');
+
+window.addEventListener('scroll', () => {
+  if (window.pageYOffset > 0) {
+    backToTopButton.style.display = 'block';
+  } else {
+    backToTopButton.style.display = 'none';
+  }
+});
+
+backToTopButton.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+
 
