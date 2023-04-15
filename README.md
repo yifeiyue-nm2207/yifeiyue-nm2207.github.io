@@ -23,3 +23,5 @@ Week 12 Diary Entry:
 https://drive.google.com/file/d/1kcCA8XeUgTePba-rADmpCkB2Av9E9xCS/view?usp=share_link
 
 Final Write Up:
+
+https://drive.google.com/file/d/1kCVuYsZojSjgrrdCZ5QcvfoguVlI34NG/view?usp=sharing
